@@ -4,10 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-
-client = OpenAI(api_key = openai.api_key, )
+client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"), )
 
 def page2():
     st.title("OpenAI DALL·E Image Generation")
