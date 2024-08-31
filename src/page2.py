@@ -1,8 +1,5 @@
 import streamlit as st
-from openai import OpenAI
-import os
-from dotenv import load_dotenv
-load_dotenv()
+import openai
 
 def page2():
     st.title("OpenAI DALL·E Image Generation")
@@ -18,8 +15,7 @@ def page2():
 
     if submit_button:
         if prompt:
-            client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
-            response = client.image.create(
+            response = openai.image.create(
                     prompt = prompt,
                     n = num_images,
                     size=size,
@@ -30,4 +26,3 @@ def page2():
 
                 st.image(image_url, caption=f"Generated image: {idx+1}",
                          use_column_width=True)
-
