@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 
 def page2():
     st.title("OpenAI DALL·E Image Generation")
@@ -15,7 +15,8 @@ def page2():
 
     if submit_button:
         if prompt:
-            response = openai.image.create(
+            client = OpenAI()
+            response = client.image.create(
                     prompt = prompt,
                     n = num_images,
                     size=size,
