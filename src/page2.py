@@ -4,8 +4,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"), )
-
 def page2():
     st.title("OpenAI DALL·E Image Generation")
     st.info("""#### NOTE: you can download image by \
@@ -20,6 +18,7 @@ def page2():
 
     if submit_button:
         if prompt:
+            client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
             response = client.image.create(
                     prompt = prompt,
                     n = num_images,
